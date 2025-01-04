@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asuransi - Polapikir Investor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", serif;
+            background-color: #0f0f0f;
+            color: #d4af37;
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1c1c1c;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #d4af37;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .taskbar a {
+            color: #d4af37;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #d4af37;
+            color: #1c1c1c;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .content-section {
+            margin: 50px 20px;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #1c1c1c;
+            background-color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            color: #1c1c1c;
+        }
+
+        .insurance-calculator {
+            background-color: rgba(28, 28, 28, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .insurance-calculator h3 {
+            color: #d4af37;
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .insurance-calculator form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .insurance-calculator input, .insurance-calculator select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .insurance-calculator button {
+            background-color: #d4af37;
+            color: #1c1c1c;
+            padding: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .insurance-calculator button:hover {
+            background-color: #fff;
+            color: #1c1c1c;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h1>Asuransi</h1>
+
+        <p>Asuransi adalah alat penting untuk melindungi diri Anda dan keluarga dari risiko tak terduga. Kami membantu Anda memahami berbagai jenis asuransi yang dapat melindungi kekayaan Anda, kesehatan, dan keamanan finansial Anda.</p>
+
+        <h2>Jenis Asuransi </h2>
+        <p>terdapat beberapa jenis asuransi, termasuk:</p>
+        <ul>
+            <li><strong>Asuransi Kesehatan:</strong> Melindungi Anda dari biaya medis tak terduga.</li>
+            <li><strong>Asuransi Jiwa:</strong> Memberikan perlindungan finansial bagi keluarga Anda jika terjadi hal yang tidak diinginkan.</li>
+            <li><strong>Asuransi Kendaraan:</strong> Melindungi kendaraan Anda dari kerusakan atau kehilangan.</li>
+            <li><strong>Asuransi Properti:</strong> Melindungi rumah dan harta benda Anda dari kerusakan atau kehilangan.</li>
+        </ul>
+
+        <div class="insurance-calculator">
+            <h3>Hitung Premi Asuransi Anda</h3>
+            <p>Gunakan kalkulator di bawah ini untuk menghitung estimasi premi asuransi berdasarkan beberapa faktor.</p>
+
+            <form id="insuranceForm">
+                <label for="age">Usia:</label>
+                <input type="number" id="age" name="age" required min="18" max="100" placeholder="Masukkan Usia Anda">
+
+                <label for="coverage">Jumlah Perlindungan (Rp):</label>
+                <input type="number" id="coverage" name="coverage" required placeholder="Masukkan Jumlah Perlindungan">
+
+                <label for="type">Jenis Asuransi:</label>
+                <select id="type" name="type">
+                    <option value="health">Asuransi Kesehatan</option>
+                    <option value="life">Asuransi Jiwa</option>
+                    <option value="vehicle">Asuransi Kendaraan</option>
+                    <option value="property">Asuransi Properti</option>
+                </select>
+
+                <button type="submit">Hitung Premi</button>
+            </form>
+
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('insuranceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Mengambil input dari form
+            const age = parseInt(document.getElementById('age').value);
+            const coverage = parseInt(document.getElementById('coverage').value);
+            const type = document.getElementById('type').value;
+
+            // Validasi input
+            if (isNaN(age) || isNaN(coverage) || age < 18 || coverage <= 0) {
+                document.getElementById('result').innerHTML = 'Harap masukkan data yang valid.';
+                return;
+            }
+
+            // Menghitung premi berdasarkan usia dan jenis asuransi
+            let premium = 0;
+
+            // Asuransi Kesehatan
+            if (type === 'health') {
+                premium = (age < 30) ? coverage * 0.02 : coverage * 0.04;
+            }
+            // Asuransi Jiwa
+            else if (type === 'life') {
+                premium = (age < 30) ? coverage * 0.03 : coverage * 0.05;
+            }
+            // Asuransi Kendaraan
+            else if (type === 'vehicle') {
+                premium = coverage * 0.01;
+            }
+            // Asuransi Properti
+            else if (type === 'property') {
+                premium = coverage * 0.02;
+            }
+
+            // Menampilkan hasil
+            document.getElementById('result').innerHTML = `Estimasi Premi Asuransi: Rp ${premium.toLocaleString()}`;
+        });
+    </script>
+</body>
+</html>

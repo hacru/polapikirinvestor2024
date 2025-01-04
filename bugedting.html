@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengelolaan Anggaran Keuangan</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Ubah latar belakang ke gradient */
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      flex-direction: column;
+      padding: 20px;
+      animation: fadeIn 1s;
+      padding-top: 80px;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .taskbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      border-bottom: 2px solid #000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .taskbar .website-name {
+      display: flex;
+      align-items: center;
+    }
+
+    .taskbar .website-name img {
+      margin-right: 10px;
+    }
+
+    .taskbar .website-name span {
+      font-size: 1.5em;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .taskbar a {
+      color: #000;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-weight: bold;
+    }
+
+    .taskbar a:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 120px;
+      margin-bottom: 100px;
+    }
+
+    .calculator {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      animation: slideUp 1s;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+      overflow-y: auto;
+      max-height: 75vh;
+    }
+
+    .heading {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .sub-heading {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-container {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 1.1em;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      text-align: right;
+    }
+
+    button {
+      padding: 12px 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 20px;
+      animation: slideUp 1s;
+      display: none;
+    }
+
+    .result p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    .btn-download {
+      background-color: #2196F3;
+      margin-top: 20px;
+    }
+
+    footer {
+      background-color: #fff;
+      color: #000;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer a {
+      color: #000;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Image sections */
+    .images {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 40%;
+      height: auto;
+      margin-top: 40px;
+    }
+
+    .image-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <div class="website-name">
+      <a href="home.html">
+        <img src="images/logo.webp" alt="Polapikir Investor Logo" height="50">
+      </a>
+      <span>Polapikir Investor</span>
+    </div>
+    <div>
+      <a href="home.html">Beranda</a>
+      <a href="about.html">Tentang</a>
+      <a href="Media.html">Media</a>
+      <a href="portfolio.html">Portofolio</a>
+      <a href="contact.html">Kontak</a>
+    </div>
+  </div>
+
+  <!-- Main content container -->
+  <div class="container">
+    <!-- Calculator section -->
+    <div class="calculator">
+      <h1 class="heading">Pengelolaan Anggaran Keuangan</h1>
+      <p class="sub-heading">Gunakan kalkulator ini untuk menghitung anggaran bulanan Anda dan mendapatkan saran keuangan yang berguna.</p>
+
+      <div class="form-container">
+        <label for="pendapatan">Pendapatan Bulanan:</label>
+        <input type="text" id="pendapatan" placeholder="Masukkan Pendapatan Anda" oninput="formatCurrency(this)">
+
+        <label for="kebutuhan">Pengeluaran Kebutuhan:</label>
+        <input type="text" id="kebutuhan" placeholder="Masukkan Pengeluaran Kebutuhan" oninput="formatCurrency(this)">
+
+        <label for="keinginan">Pengeluaran Keinginan:</label>
+        <input type="text" id="keinginan" placeholder="Masukkan Pengeluaran Keinginan" oninput="formatCurrency(this)">
+
+        <label for="tabungan">Tabungan Bulanan:</label>
+        <input type="text" id="tabungan" placeholder="Masukkan Jumlah Tabungan" oninput="formatCurrency(this)">
+
+        <label for="investasi">Investasi Bulanan:</label>
+        <input type="text" id="investasi" placeholder="Masukkan Jumlah Investasi" oninput="formatCurrency(this)">
+
+        <label for="hutang">Pembayaran Hutang:</label>
+        <input type="text" id="hutang" placeholder="Masukkan Pembayaran Hutang" oninput="formatCurrency(this)">
+
+        <label for="darurat">Dana Darurat:</label>
+        <input type="text" id="darurat" placeholder="Masukkan Dana Darurat" oninput="formatCurrency(this)">
+
+        <button id="hitung" class="btn">Hitung Anggaran</button>
+      </div>
+
+      <div id="result" class="result">
+        <div class="result-container" id="result-text">
+          <!-- Hasil perhitungan dan saran akan ditampilkan di sini -->
+        </div>
+        <button id="download" class="btn btn-download" style="display: none;">Download PDF</button>
+      </div>
+    </div>
+
+    <!-- Image section -->
+    <div class="images">
+      <div class="image-box">
+        <img src="image1.jpg" alt="Image 1">
+      </div>
+      <div class="image-box">
+        <img src="image2.jpg" alt="Image 2">
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Polapikir Investor. Semua hak cipta dilindungi.</p>
+  </footer>
+
+  <script>
+    function formatCurrency(input) {
+      let value = input.value.replace(/\D/g, '');
+      value = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value);
+      input.value = value;
+    }
+
+    document.getElementById('hitung').addEventListener('click', function() {
+      const pendapatan = parseInt(document.getElementById('pendapatan').value.replace(/\D/g, '')) || 0;
+      const kebutuhan = parseInt(document.getElementById('kebutuhan').value.replace(/\D/g, '')) || 0;
+      const keinginan = parseInt(document.getElementById('keinginan').value.replace(/\D/g, '')) || 0;
+      const tabungan = parseInt(document.getElementById('tabungan').value.replace(/\D/g, '')) || 0;
+      const investasi = parseInt(document.getElementById('investasi').value.replace(/\D/g, '')) || 0;
+      const hutang = parseInt(document.getElementById('hutang').value.replace(/\D/g, '')) || 0;
+      const darurat = parseInt(document.getElementById('darurat').value.replace(/\D/g, '')) || 0;
+
+      const totalPengeluaran = kebutuhan + keinginan + tabungan + investasi + hutang + darurat;
+      const sisaAnggaran = pendapatan - totalPengeluaran;
+
+      let resultText = `
+        <p><strong>Total Pengeluaran:</strong> ${formatRupiah(totalPengeluaran)}</p>
+        <p><strong>Sisa Anggaran:</strong> ${formatRupiah(sisaAnggaran)}</p>
+      `;
+
+      if (sisaAnggaran >= 0) {
+        resultText += `<p>Sisa anggaran Anda cukup baik. Anda masih memiliki anggaran ${formatRupiah(sisaAnggaran)} untuk tabungan, investasi, atau pengeluaran lainnya.</p>`;
+      } else {
+        resultText += `<p>Anggaran Anda defisit sebesar ${formatRupiah(Math.abs(sisaAnggaran))}. Pertimbangkan untuk mengurangi pengeluaran atau meningkatkan pendapatan.</p>`;
+      }
+
+      document.getElementById('result-text').innerHTML = resultText;
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('download').style.display = 'inline-block';
+    });
+
+    document.getElementById('download').addEventListener('click', function() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      let content = document.getElementById('result-text').innerText;
+
+      doc.text(content, 20, 20);
+      doc.save('Anggaran_Keuangan.pdf');
+    });
+  </script>
+</body>
+</html>

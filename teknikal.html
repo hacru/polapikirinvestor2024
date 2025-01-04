@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Teknikal dan TradingView</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradasi background */
+            color: #000;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slideInFromTop 1s ease-in-out;
+        }
+
+        @keyframes slideInFromTop {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #000;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .section-header {
+            color: #000;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .instructions {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .instructions h3 {
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions ul li {
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .form-group button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #ffeb3b;
+            color: #000;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Adjusted size of tradingview widget */
+        .tradingview-widget-container {
+            position: relative;
+            width: 100%; /* 100% width for full available width */
+            height: 600px; /* Set fixed height */
+            margin: 0 auto; /* Center the widget */
+        }
+
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo">
+        <img src="https://yourlogo.com/logo.png" alt="Logo">
+    </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Analisis Teknikal dan TradingView</h1>
+
+        <div class="section-header">Penjelasan Teknikal</div>
+        <div class="instructions">
+            <h3>Penjelasan Teknikal</h3>
+            <ul>
+                <li><strong>Support dan Resistance:</strong> Support adalah level harga di mana saham cenderung tidak jatuh lebih rendah, sedangkan resistance adalah level harga di mana saham sulit naik lebih tinggi. Menentukan area support dan resistance membantu dalam memprediksi potensi pergerakan harga.</li>
+                <li><strong>Moving Averages (MA):</strong> Moving average adalah indikator yang digunakan untuk menentukan arah tren dengan menghaluskan fluktuasi harga. Dua jenis umum adalah Simple Moving Average (SMA) dan Exponential Moving Average (EMA). Ketika harga melintasi MA, itu sering dianggap sebagai sinyal beli atau jual.</li>
+                <li><strong>Relative Strength Index (RSI):</strong> RSI adalah indikator momentum yang mengukur tingkat kelebihan beli atau jual suatu aset. RSI di atas 70 menunjukkan kondisi overbought (terlalu banyak dibeli), sementara di bawah 30 menunjukkan oversold (terlalu banyak dijual).</li>
+                <li><strong>Bollinger Bands:</strong> Bollinger Bands adalah indikator volatilitas yang terdiri dari tiga garis: moving average tengah, band atas dan band bawah. Ketika harga mendekati band atas, harga dianggap overbought, dan ketika mendekati band bawah, harga dianggap oversold.</li>
+            </ul>
+        </div>
+
+        <div class="section-header">TradingView - Grafik Saham</div>
+        <div class="tradingview-widget-container">
+            <div id="tradingview_12345"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="symbol">Masukkan Symbol Saham atau Kripto:</label>
+            <input type="text" id="symbol" placeholder="Contoh: AAPL, BTCUSD, BBCA.JK" required>
+        </div>
+        <div class="form-group">
+            <button onclick="updateChart()">Perbarui Grafik</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Polapikir Investor</p>
+        <div>
+            <a href="privacy.html">Kebijakan Privasi</a>
+            <a href="terms.html">Syarat & Ketentuan</a>
+            <a href="sitemap.html">Peta Situs</a>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        function createChart(symbol) {
+            new TradingView.widget({
+                "autosize": false,   /* Disabled autosize */
+                "width": "100%",     /* Set width to 100% */
+                "height": "600px",   /* Set height explicitly */
+                "symbol": symbol,
+                "interval": "D",
+                "timezone": "Etc/UTC",
+                "theme": "light",
+                "style": "1",
+                "locale": "id",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "withdateranges": true,
+                "hide_side_toolbar": false,
+                "allow_symbol_change": true,
+                "details": true,
+                "container_id": "tradingview_12345"
+            });
+        }
+
+        // Initial chart
+        createChart("NASDAQ:AAPL");
+
+        function updateChart() {
+            var symbol = document.getElementById('symbol').value;
+            if(symbol) {
+                createChart(symbol.toUpperCase());
+            }
+        }
+    </script>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</body>
+</html>

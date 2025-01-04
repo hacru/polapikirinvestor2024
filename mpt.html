@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Diversifikasi dengan MPT</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradasi linear */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 3px solid #e0f7fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #e0f7fa;
+            color: #000;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .intro {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .allocation-table {
+            margin: 40px 0;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .allocation-table th, .allocation-table td {
+            padding: 15px;
+            border: 1px solid #00796b;
+            text-align: left;
+        }
+
+        .allocation-table th {
+            background-color: #00796b;
+            color: white;
+        }
+
+        .allocation-table td {
+            background-color: #f0f0f0;
+        }
+
+        .chart-container {
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .footer p {
+            color: #000;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Portofolio Diversifikasi dengan Modern Portfolio Theory</h1>
+        
+        <!-- Introduction -->
+        <div class="intro">
+            <p><strong>Teori Portofolio Modern (MPT)</strong> adalah teori investasi yang bertujuan mengoptimalkan pengembalian dengan meminimalkan risiko. Dalam portofolio yang terdiversifikasi dengan baik, Anda dapat mengurangi volatilitas tanpa mengorbankan potensi pengembalian yang tinggi.</p>
+            <p>Berikut adalah contoh alokasi aset untuk portofolio yang terdiversifikasi:</p>
+        </div>
+
+        <!-- Alokasi Aset Table -->
+        <table class="allocation-table">
+            <thead>
+                <tr>
+                    <th>Aset</th>
+                    <th>Alokasi (%)</th>
+                    <th>Deskripsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Saham (Equity)</td>
+                    <td>40%</td>
+                    <td>Saham perusahaan besar dengan potensi pengembalian tinggi dan volatilitas yang lebih tinggi.</td>
+                </tr>
+                <tr>
+                    <td>Obligasi (Bonds)</td>
+                    <td>30%</td>
+                    <td>Instrumen pendapatan tetap yang memberikan stabilitas dan pengembalian lebih rendah dibandingkan saham.</td>
+                </tr>
+                <tr>
+                    <td>Real Estate (Properti)</td>
+                    <td>20%</td>
+                    <td>Investasi dalam properti atau real estate yang cenderung stabil dan melindungi terhadap inflasi.</td>
+                </tr>
+                <tr>
+                    <td>Komoditas (Commodities)</td>
+                    <td>10%</td>
+                    <td>Komoditas seperti emas atau minyak yang bertindak sebagai pelindung terhadap inflasi.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pie Chart -->
+        <div class="chart-container">
+            <canvas id="portfolioChart"></canvas>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Polapikir Investor. Semua Hak Dilindungi.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Pie Chart using Chart.js
+        window.onload = function() {
+            const ctx = document.getElementById('portfolioChart').getContext('2d');
+            const portfolioChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Saham (Equity)', 'Obligasi (Bonds)', 'Real Estate (Properti)', 'Komoditas (Commodities)'],
+                    datasets: [{
+                        label: 'Alokasi Aset Portofolio',
+                        data: [40, 30, 20, 10],  // Alokasi aset
+                        backgroundColor: ['#ffb74d', '#81c784', '#4caf50', '#ff7043'],
+                        borderColor: ['#ffffff', '#ffffff', '#ffffff', '#ffffff'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behavioral Portfolio Theory (BPT)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #ffffff); /* Gradasi warna background */
+            color: #000;
+            overflow-x: hidden;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Taskbar */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideInFromTop 1s ease-in-out;
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .taskbar a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* Container */
+        .container {
+            padding: 120px 20px 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: #000;
+            text-align: center;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Content section */
+        .section {
+            margin-bottom: 50px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .content {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .chart-container canvas {
+            max-width: 100%;
+            max-height: 400px;
+        }
+
+        /* Animations */
+        @keyframes slideInFromTop {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 30px;
+            animation: fadeInUp 2.5s ease-in-out;
+        }
+
+        .cta-section a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(120deg, #000, #212121);
+            color: #ffeb3b;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            animation: bounce 1s infinite;
+        }
+
+        .cta-section a:hover {
+            background: linear-gradient(120deg, #212121, #424242);
+            color: #ffd54f;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            color: #000;
+            font-size: 0.9rem;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="website-name">
+            <img src="images/logo.webp" alt="Logo">
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Title -->
+        <div class="section">
+            <h1>Behavioral Portfolio Theory (BPT)</h1>
+            <p class="content">Behavioral Portfolio Theory (BPT) adalah teori yang menggabungkan psikologi perilaku dengan teori investasi tradisional. Berbeda dengan teori portofolio klasik, BPT mengakui bahwa investor sering kali dipengaruhi oleh faktor psikologis dan emosional dalam keputusan investasi mereka.</p>
+        </div>
+
+        <!-- Penjelasan BPT -->
+        <div class="section">
+            <h2>Pemahaman Dasar Behavioral Portfolio Theory</h2>
+            <p class="content">BPT berfokus pada beberapa konsep kunci yang mempengaruhi pengambilan keputusan investasi:</p>
+            <ul class="content">
+                <li><strong>Tujuan Emosional vs Tujuan Finansial:</strong> Investor tidak hanya memikirkan keuntungan finansial tetapi juga tujuan emosional mereka, seperti menghindari kecemasan.</li>
+                <li><strong>Mental Accounting:</strong> Investor cenderung membagi portofolio mereka ke dalam beberapa kategori berdasarkan tujuan investasi mereka (jangka pendek, jangka panjang, dll.)</li>
+                <li><strong>Loss Aversion:</strong> Investor lebih takut akan kerugian daripada potensi keuntungan, yang dapat membuat mereka menghindari investasi berisiko tinggi meskipun ada potensi keuntungan tinggi.</li>
+            </ul>
+        </div>
+
+        <!-- Pie Chart untuk Distribusi Portofolio BPT -->
+        <div class="section">
+            <h2>Grafik Pie: Distribusi Portofolio Behavioral</h2>
+            <div class="chart-container">
+                <canvas id="bptChart"></canvas>
+            </div>
+            <p class="content">Grafik di atas menggambarkan bagaimana seorang investor yang mengikuti BPT dapat membagi portofolio mereka ke dalam tiga kategori berdasarkan tingkat risiko: Risiko Rendah, Risiko Sedang, dan Risiko Tinggi.</p>
+            <p class="content"><strong>Contoh Aset:</strong></p>
+            <ul class="content">
+                <li><strong>Risiko Rendah:</strong> Obligasi Pemerintah, Reksa Dana Pasar Uang, Deposito.</li>
+                <li><strong>Risiko Sedang:</strong> Saham Blue-Chip, Reksa Dana Campuran, Real Estate.</li>
+                <li><strong>Risiko Tinggi:</strong> Saham Teknologi, Cryptocurrency (misalnya Bitcoin), Investasi Start-Up.</li>
+            </ul>
+        </div>
+
+        <!-- CTA (Call To Action) -->
+        <div class="cta-section">
+            <h3>Ingin Mempelajari Lebih Lanjut?</h3>
+            <a href="contact.html">Hubungi Kami</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Polapikir Investor. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Memastikan bahwa chart hanya ditampilkan setelah halaman selesai dimuat
+        window.onload = function() {
+            const ctx = document.getElementById('bptChart').getContext('2d');
+            const bptChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Risiko Rendah', 'Risiko Sedang', 'Risiko Tinggi'],
+                    datasets: [{
+                        label: 'Distribusi Portofolio',
+                        data: [50, 30, 20], // Persentase distribusi
+                        backgroundColor: ['#4caf50', '#ff9800', '#f44336'],
+                        borderColor: ['#ffffff', '#ffffff', '#ffffff'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>

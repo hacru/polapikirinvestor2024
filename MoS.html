@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perhitungan Margin of Safety (MoS)</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradasi latar belakang */
+            color: #000;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .instructions {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .instructions h3 {
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .form-group button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #ffeb3b;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Perhitungan Margin of Safety (MoS)</h1>
+
+        <!-- Instruksi Pengisian -->
+        <div class="instructions">
+            <h3>Tata Cara Pengisian</h3>
+            <ul>
+                <li><strong>Nilai Intrinsik Perusahaan:</strong> Masukkan nilai intrinsik yang Anda peroleh dari perhitungan (misalnya DCF). Ini adalah nilai yang dihitung dari proyeksi arus kas masa depan atau metode lainnya.</li>
+                <li><strong>Harga Pasar Saat Ini:</strong> Masukkan harga saham perusahaan yang berlaku saat ini berdasarkan harga pasar saham perusahaan.</li>
+            </ul>
+        </div>
+
+        <!-- Formulir Input -->
+        <div class="form-group">
+            <label for="intrinsicValue">Nilai Intrinsik Perusahaan:</label>
+            <input type="number" id="intrinsicValue" placeholder="Masukkan Nilai Intrinsik Perusahaan" required>
+        </div>
+        <div class="form-group">
+            <label for="marketPrice">Harga Pasar Saat Ini:</label>
+            <input type="number" id="marketPrice" placeholder="Masukkan Harga Pasar Saat Ini" required>
+        </div>
+        <div class="form-group">
+            <button onclick="calculateMoS()">Hitung Margin of Safety (MoS)</button>
+        </div>
+
+        <!-- Hasil Perhitungan -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Polapikir Investor</p>
+        <div>
+            <a href="privacy.html">Kebijakan Privasi</a>
+            <a href="terms.html">Syarat & Ketentuan</a>
+            <a href="sitemap.html">Peta Situs</a>
+        </div>
+    </footer>
+
+    <script>
+        function calculateMoS() {
+            // Ambil nilai input
+            var intrinsicValue = parseFloat(document.getElementById('intrinsicValue').value);
+            var marketPrice = parseFloat(document.getElementById('marketPrice').value);
+            var resultText = "";
+
+            // Validasi input
+            if (isNaN(intrinsicValue) || isNaN(marketPrice) || intrinsicValue <= 0 || marketPrice <= 0) {
+                resultText = "Harap masukkan data yang valid!";
+            } else {
+                // Hitung Margin of Safety (MoS)
+                var mos = (intrinsicValue - marketPrice) / intrinsicValue * 100;
+
+                resultText = "Margin of Safety (MoS) adalah: " + mos.toFixed(2) + "%.";
+
+                if (mos > 30) {
+                    resultText += " Ini adalah peluang investasi yang baik!";
+                } else if (mos > 10) {
+                    resultText += " Ini adalah peluang investasi yang cukup baik.";
+                } else {
+                    resultText += " Ini mungkin bukan peluang investasi yang baik.";
+                }
+            }
+
+            // Tampilkan hasil
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>

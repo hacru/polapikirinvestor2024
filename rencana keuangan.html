@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Tujuan Keuangan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Background gradient */
+            color: #000;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out;
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h1 {
+            color: #000;
+            font-size: 2.5rem;
+            animation: fadeIn 2s ease-out;
+            margin-top: 120px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        label {
+            font-size: 1.2rem;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="text"], input[type="number"], select {
+            padding: 10px;
+            width: 80%;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        button:hover {
+            background-color: #ffeb3b;
+            color: #000;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            margin-top: 30px;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        .result span {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Taskbar styling */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slideInFromTop 1s ease-in-out;
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo" height="50">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <h1>Kalkulator Tujuan Keuangan</h1>
+
+    <form id="goal-form">
+        <label for="goal-type">Pilih Tujuan Keuangan:</label>
+        <select id="goal-type">
+            <option value="short-term">Jangka Pendek</option>
+            <option value="medium-term">Jangka Menengah</option>
+            <option value="long-term">Jangka Panjang</option>
+        </select>
+
+        <div id="short-term-fields">
+            <label for="short-term">Tujuan Jangka Pendek:</label>
+            <input type="text" id="short-term" placeholder="Masukkan tujuan jangka pendek">
+            <input type="text" id="short-term-amount" placeholder="Jumlah yang dibutuhkan" />
+            <input type="number" id="short-term-duration" placeholder="Berapa bulan sampai tercapai?" />
+        </div>
+
+        <div id="medium-term-fields" style="display:none;">
+            <label for="medium-term">Tujuan Jangka Menengah:</label>
+            <input type="text" id="medium-term" placeholder="Masukkan tujuan jangka menengah">
+            <input type="text" id="medium-term-amount" placeholder="Jumlah yang dibutuhkan" />
+            <input type="number" id="medium-term-duration" placeholder="Berapa tahun sampai tercapai?" />
+        </div>
+
+        <div id="long-term-fields" style="display:none;">
+            <label for="long-term">Tujuan Jangka Panjang:</label>
+            <input type="text" id="long-term" placeholder="Masukkan tujuan jangka panjang">
+            <input type="text" id="long-term-amount" placeholder="Jumlah yang dibutuhkan" />
+            <input type="number" id="long-term-duration" placeholder="Berapa tahun sampai tercapai?" />
+        </div>
+
+        <button type="button" id="calculate">Hitung Tujuan</button>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <div class="button-container">
+        <button id="download-pdf">Unduh sebagai PDF</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Polapikir Investor</p>
+        <div>
+            <a href="privacy.html">Kebijakan Privasi</a>
+            <a href="terms.html">Syarat & Ketentuan</a>
+            <a href="sitemap.html">Peta Situs</a>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsi untuk menambahkan pemisah ribuan, juta, miliar, dsb.
+        function formatNumber(number) {
+            let parts = number.toString().split('.');
+            let integer = parts[0];
+            let decimal = parts[1] ? '.' + parts[1] : '';
+
+            // Memformat angka dengan titik sebagai pemisah ribuan
+            let formattedInteger = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return formattedInteger + decimal;
+        }
+
+        // Fungsi untuk menangani input jumlah dengan format
+        function handleInputFormatting(id) {
+            let input = document.getElementById(id);
+            input.addEventListener('input', function() {
+                let value = input.value.replace(/\D/g, ''); // Menghapus karakter non-numerik
+                input.value = formatNumber(value); // Menambahkan format angka
+            });
+        }
+
+        handleInputFormatting("short-term-amount");
+        handleInputFormatting("medium-term-amount");
+        handleInputFormatting("long-term-amount");
+
+        // Fungsi untuk menghitung hasil dan menampilkan
+        document.getElementById("calculate").addEventListener("click", function () {
+            const goalType = document.getElementById("goal-type").value;
+            let resultText = '';
+
+            // Mengambil nilai input sesuai dengan jenis tujuan
+            if (goalType === 'short-term') {
+                resultText = "Tujuan Jangka Pendek: " + document.getElementById("short-term").value;
+            } else if (goalType === 'medium-term') {
+                resultText = "Tujuan Jangka Menengah: " + document.getElementById("medium-term").value;
+            } else {
+                resultText = "Tujuan Jangka Panjang: " + document.getElementById("long-term").value;
+            }
+
+            // Tampilkan hasil
+            document.getElementById("result").innerHTML = resultText;
+        });
+
+        // Fungsi untuk mengunduh hasil dalam format PDF
+        document.getElementById("download-pdf").addEventListener("click", function () {
+            const resultText = document.getElementById("result").innerText;
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text(resultText, 10, 10);
+            doc.save("goal-result.pdf");
+        });
+    </script>
+
+</body>
+</html>

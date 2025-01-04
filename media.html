@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight & Artikel</title>
+    <!-- Menambahkan Google Font Lora untuk tampilan elegan -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif; /* Menggunakan font Poppins untuk body */
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Linear gradient dari biru muda ke putih */
+            color: #333;
+            animation: fadeIn 1.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar (Taskbar) Styles */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff; /* Background putih */
+            padding: 15px 25px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #000; /* Border hitam untuk taskbar */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out; /* Menambahkan animasi slideDown */
+        }
+
+        /* Animasi SlideDown */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .taskbar a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Highlight Section */
+        .highlight {
+            padding: 20px;
+            background-color: #ffffff; /* Background putih */
+            margin-top: 80px; /* Memberikan jarak dari taskbar */
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: zoomIn 1.5s ease-in-out;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .highlight h2 {
+            font-size: 2rem;
+            margin: 10px 0;
+            color: #333;
+            font-weight: 600; /* Font weight yang lebih elegan */
+        }
+
+        .highlight p {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 10px 0 20px;
+        }
+
+        .highlight a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .highlight a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Article List Section */
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .article-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .article-item .text-content {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .article-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .article-item p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .article-item a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .article-item a:hover {
+            background-color: #0056b3;
+        }
+
+        .article-item img {
+            width: 120px; /* Ukuran gambar lebih kecil */
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #ffffff; /* Background putih */
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+            width: 100%;
+            margin-top: auto; /* Agar footer berada di paling bawah */
+        }
+
+        .footer p {
+            font-size: 1rem;
+            color: #777;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+   <!-- Taskbar -->
+   <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Highlight Section -->
+    <section class="highlight">
+        <img src="images/artikel1.jpg" alt="Highlight Artikel" style="width: 200px; max-width: 350px; height: auto; margin-bottom: 50px;">
+        <h2>Highlight Artikel Utama</h2>
+        <p>
+            Ini adalah artikel utama yang menjadi sorotan. Artikel ini memuat informasi penting dan 
+            menarik dengan visual besar untuk menarik perhatian pembaca.
+        </p>
+        <a href="media/artikel1.html" target="_blank">Baca Selengkapnya</a>
+    </section>
+    
+    <!-- Article List Section -->
+    <section class="article-list">
+        <!-- Artikel 1 -->
+        <div class="article-item">
+            <div class="text-content">
+                <h3>Artikel 1</h3>
+                <p>Ringkasan untuk Artikel 1</p>
+                <a href="artikel1.html" target="_blank">Baca Selengkapnya</a>
+            </div>
+            <img src="images/artikel1.jpg" alt="Artikel 1">
+        </div>
+
+        <!-- Artikel 2 -->
+        <div class="article-item">
+            <div class="text-content">
+                <h3>Artikel 2</h3>
+                <p>Ringkasan untuk Artikel 2</p>
+                <a href="media/artikel2.html" target="_blank">Baca Selengkapnya</a>
+            </div>
+            <img src="images/artikel2.jpg" alt="Artikel 2">
+        </div>
+
+        <!-- Artikel 3 -->
+        <div class="article-item">
+            <div class="text-content">
+                <h3>Artikel 3</h3>
+                <p>Ringkasan untuk Artikel 3</p>
+                <a href="media/artikel3.html" target="_blank">Baca Selengkapnya</a>
+            </div>
+            <img src="images/artikel3.jpg" alt="Artikel 3">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Media Grid. All rights reserved.</p>
+    </footer>
+</body>
+</html>

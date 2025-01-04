@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running Text Crypto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #000;
+        }
+        .crypto-ticker {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            padding: 10px 0;
+        }
+        .crypto-ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollLeft 100s linear infinite; /* Durasi animasi 40 detik */
+        }
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="crypto-ticker">
+        <div class="crypto-ticker-content" id="cryptoTicker">
+            Memuat data harga kripto terbaru...
+        </div>
+    </div>
+
+    <script>
+        async function fetchCryptoPrices() {
+            const apiUrl = "https://api.coingecko.com/api/v3/coins/markets";
+            const params = "?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false";
+            const url = apiUrl + params;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // Membuat string untuk teks berjalan
+                let tickerText = data.map(coin => {
+                    const price = coin.current_price.toLocaleString("en-US", { style: "currency", currency: "USD" });
+                    const change = coin.price_change_percentage_24h.toFixed(2);
+                    const changeSymbol = change >= 0 ? "▲" : "▼";
+                    const changeColor = change >= 0 ? "green" : "red";
+                    return `
+                        <span style="margin-right: 20px;">
+                            ${coin.name} (${coin.symbol.toUpperCase()}): 
+                            ${price} 
+                            <span style="color: ${changeColor};">${changeSymbol} ${Math.abs(change)}%</span>
+                        </span>
+                    `;
+                }).join(" ");
+
+                // Memasukkan teks ke dalam elemen running text
+                document.getElementById("cryptoTicker").innerHTML = tickerText;
+            } catch (error) {
+                console.error("Error fetching crypto prices:", error);
+                document.getElementById("cryptoTicker").innerText = "Gagal memuat data harga kripto.";
+            }
+        }
+
+        // Panggil fungsi fetchCryptoPrices saat halaman dimuat
+        fetchCryptoPrices();
+
+        // Update data setiap 1 menit
+        setInterval(fetchCryptoPrices, 60000);
+    </script>
+</body>
+</html>

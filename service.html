@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan - Polapikir Investor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffeb3b;
+            color: #000;
+        }
+
+        /* Taskbar */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 3px solid #ffeb3b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .taskbar a:hover {
+            background-color: #ffeb3b;
+            color: #000;
+        }
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Container */
+        .container {
+            padding: 120px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1, p {
+            color: #000;
+        }
+
+        /* Service Section */
+        .service-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .service-card {
+            background-color: #fff;
+            width: calc(33% - 20px);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ffeb3b;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: zoomIn 1s ease-in-out;
+        }
+        .service-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #ffeb3b;
+            color: #000;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="service.html">Layanan</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Layanan Section -->
+    <div class="container">
+        <h1>Layanan Kami</h1>
+        <p>Kami menyediakan berbagai layanan investasi yang dirancang untuk membantu Anda mencapai tujuan finansial Anda.</p>
+        
+        <div class="service-section">
+            <!-- Layanan 1 -->
+            <div class="service-card">
+                <img src="images/wealth-management.jpg" alt="Wealth Management">
+                <h3>Manajemen Kekayaan</h3>
+                <p>Mengelola kekayaan Anda dengan pendekatan strategis untuk memastikan pertumbuhan yang berkelanjutan.</p>
+                <a href="#" class="cta-button">Pelajari Lebih Lanjut</a>
+            </div>
+            <!-- Layanan 2 -->
+            <div class="service-card">
+                <img src="images/stock-investment.jpg" alt="Stock Investment">
+                <h3>Investasi Saham</h3>
+                <p>Mengidentifikasi peluang investasi saham terbaik untuk memaksimalkan portofolio Anda.</p>
+                <a href="#" class="cta-button">Pelajari Lebih Lanjut</a>
+            </div>
+            <!-- Layanan 3 -->
+            <div class="service-card">
+                <img src="images/financial-consulting.jpg" alt="Financial Consulting">
+                <h3>Konsultasi Keuangan</h3>
+                <p>Konsultasi keuangan pribadi atau bisnis untuk perencanaan jangka panjang yang efektif.</p>
+                <a href="#" class="cta-button">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Polapikir Investor. Semua hak dilindungi.</p>
+        <div>
+            <a href="privacy.html">Kebijakan Privasi</a> | 
+            <a href="terms.html">Syarat & Ketentuan</a> | 
+            <a href="contact.html">Kontak Kami</a>
+        </div>
+    </footer>
+</body>
+</html>

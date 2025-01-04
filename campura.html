@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reksa Dana Campuran - Polapikir Investor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradien Biru Muda ke Putih */
+            color: #000;
+            overflow-x: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #ffeb3b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transform: translateY(-100%);
+            animation: slideDown 0.8s ease forwards;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .website-name span {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #ffeb3b;
+            color: #000;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 100px;
+            padding: 20px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .content h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            color: #000;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin: 40px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 1000px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeInSection 1s ease-out;
+        }
+
+        @keyframes fadeInSection {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .section img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            animation: fadeInImage 1.2s ease-in-out;
+        }
+
+        @keyframes fadeInImage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .section li {
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #000;
+        }
+
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            animation: slideUpFooter 0.8s ease-in-out;
+        }
+
+        @keyframes slideUpFooter {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #000;
+        }
+
+        footer a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Reksa Dana Campuran</h1>
+        <p>Reksa Dana Campuran adalah produk investasi yang mengalokasikan dana pada berbagai instrumen keuangan, baik saham, obligasi, maupun pasar uang. Produk ini cocok bagi investor yang menginginkan keseimbangan antara potensi imbal hasil yang tinggi dan risiko yang terkendali.</p>
+
+        <div class="section">
+            <h2>Grafik Kinerja Reksa Dana Campuran</h2>
+            <!-- Grafik Kinerja -->
+            <img src="images/campuran.jpg" alt="Grafik Kinerja Reksa Dana Campuran">
+            <p>Grafik ini menunjukkan performa Reksa Dana Campuran dalam 12 bulan terakhir. Dengan alokasi yang fleksibel antara saham dan obligasi, produk ini berusaha untuk memberikan imbal hasil yang optimal dengan mengelola risiko.</p>
+        </div>
+
+        <div class="section">
+            <h2>Alokasi Aset Reksa Dana Campuran</h2>
+            <p>Alokasi aset pada Reksa Dana Campuran adalah sebagai berikut:</p>
+            <ul>
+                <li>50% pada **Saham**: Menyasar saham dengan potensi pertumbuhan yang baik di pasar modal.</li>
+                <li>40% pada **Obligasi**: Memberikan stabilitas dengan pendapatan tetap dari instrumen obligasi.</li>
+                <li>10% pada **Pasar Uang**: Menjaga likuiditas dengan menempatkan sebagian dana pada instrumen pasar uang.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Data Manajer Investasi: Tri Megah Semesta</h2>
+            <p><strong>AUM (Asset Under Management):</strong> Rp 12.000.000.000.000 (12 Triliun) – Tri Megah Semesta mengelola berbagai produk reksa dana dengan fokus pada alokasi yang fleksibel antara saham dan obligasi.</p>
+            <p><strong>Dana Kelola:</strong> Manajer Investasi ini memiliki berbagai produk reksa dana campuran yang menawarkan keseimbangan antara potensi keuntungan dan risiko yang moderat.</p>
+            <p><strong>Produknya:</strong> 
+                <ul>
+                    <li>Reksa Dana Campuran Tri Megah - Kombinasi optimal antara saham dan obligasi.</li>
+                    <li>Reksa Dana Mix Fund - Fokus pada saham dan obligasi dengan proporsi yang fleksibel.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Polapikir Investor &copy; 2024. Semua Hak Dilindungi.</p>
+        <div>
+            <a href="privacy.html">Kebijakan Privasi</a>
+            <a href="terms.html">Syarat & Ketentuan</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Coin - Pembahasan dan Pergerakan Harga</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #ffffff); /* Background gradasi */
+            color: #000;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Fade In */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animasi Zoom pada Gambar */
+        .image-content img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-content img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Taskbar */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 3px solid #ffeb3b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: fadeIn 1.2s ease-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .taskbar.scrolled {
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #ffeb3b;
+            color: #000;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 100px 20px 20px;
+        }
+
+        .coin-section {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: flex-start;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .footer p {
+            color: #000;
+            font-size: 1rem;
+        }
+
+        /* TradingView Widget */
+        .tradingview-widget-container {
+            margin-top: 40px;
+            width: 100%;
+            height: 600px;
+        }
+
+        .tradingview-widget-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Keyframes */
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Pembahasan Meme Coin</h1>
+        <p>Meme coin adalah jenis cryptocurrency yang sering kali dibuat dengan inspirasi dari meme atau tren populer di internet. Meskipun awalnya hanya untuk hiburan, beberapa meme coin kini memiliki komunitas besar dan kapitalisasi pasar yang signifikan. Popularitas meme coin meningkat dengan dukungan dari selebritas atau tren di media sosial. Namun, karena sifatnya yang spekulatif, penting untuk berhati-hati dan melakukan riset sebelum berinvestasi.</p>
+
+        <div class="scroll-container">
+            <div class="coin-section">
+                <div class="text-content">
+                    <h1>1. Dogecoin (DOGE)</h1>
+                    <p>Dogecoin adalah meme coin pertama yang dibuat sebagai lelucon pada tahun 2013, namun kini menjadi salah satu aset kripto paling populer.</p>
+                </div>
+                <div class="image-content">
+                    <img src="images/dogecoin.jpg" alt="Dogecoin">
+                </div>
+            </div>
+
+            <div class="coin-section">
+                <div class="text-content">
+                    <h1>2. Shiba Inu (SHIB)</h1>
+                    <p>Shiba Inu sering disebut sebagai "pembunuh Dogecoin" dan memiliki komunitas besar yang mendukung proyeknya.</p>
+                </div>
+                <div class="image-content">
+                    <img src="images/shiba.jpg" alt="Shiba Inu">
+                </div>
+            </div>
+
+            <div class="coin-section">
+                <div class="text-content">
+                    <h1>3. Baby Doge Coin (BabyDoge)</h1>
+                    <p>Baby Doge adalah turunan dari Dogecoin yang berfokus pada amal dan komunitas.</p>
+                </div>
+                <div class="image-content">
+                    <img src="images/babydoge.jpg" alt="Baby Doge">
+                </div>
+            </div>
+
+            <div class="coin-section">
+                <div class="text-content">
+                    <h1>4. Floki Inu (FLOKI)</h1>
+                    <p>Floki Inu terinspirasi dari anjing peliharaan Elon Musk dan menggabungkan elemen NFT serta DeFi.</p>
+                </div>
+                <div class="image-content">
+                    <img src="images/floki.jpg" alt="Floki Inu">
+                </div>
+            </div>
+
+            <div class="coin-section">
+                <div class="text-content">
+                    <h1>5. Dogelon Mars (ELON)</h1>
+                    <p>Dogelon Mars menggabungkan nama Elon Musk dengan tema eksplorasi luar angkasa.</p>
+                </div>
+                <div class="image-content">
+                    <img src="images/dogelon.jpg" alt="Dogelon Mars">
+                </div>
+            </div>
+
+            <div class="coin-section">
+                <div class="text-content">
+                    <h1>6. Samoyedcoin (SAMO)</h1>
+                    <p>Samoyedcoin adalah meme coin berbasis blockchain Solana yang berfokus pada komunitas.</p>
+                </div>
+                <div class="image-content">
+                    <img src="images/samoyed.jpg" alt="Samoyedcoin">
+                </div>
+            </div>
+
+            <div class="coin-section">
+                <div class="text-content">
+                    <h1>7. MonaCoin (MONA)</h1>
+                    <p>MonaCoin adalah meme coin Jepang yang sudah lama ada dan diterima secara luas di negara tersebut.</p>
+                </div>
+                <div class="image-content">
+                    <img src="images/mona.jpg" alt="MonaCoin">
+                </div>
+            </div>
+
+            <div class="coin-section">
+                <div class="text-content">
+                    <h1>8. Hoge Finance (HOGE)</h1>
+                    <p>Hoge Finance adalah meme coin yang menggabungkan fitur deflasi dan komunitas yang kuat.</p>
+                </div>
+                <div class="image-content">
+                    <img src="images/hoge.jpg" alt="Hoge Finance">
+                </div>
+            </div>
+        </div>
+
+        <!-- TradingView Widget -->
+        <div class="tradingview-widget-container">
+            <div id="tradingview_3cc07"></div>
+            <div class="tradingview-widget-container">
+                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_3cc07&symbol=BINANCE%3ADOGEUSDT&interval=60&hidesidetoolbar=1&theme=light&style=1&timezone=exchange&locale=en" width="100%" height="600" frameborder="0" allowfullscreen="true"></iframe>
+            </div>
+            
+            <script type="text/javascript">
+                new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "BINANCE:DOGEUSDT",
+                    "interval": "60",
+                    "timezone": "exchange",
+                    "theme": "light",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "withdateranges": true,
+                    "hide_side_toolbar": false,
+                    "allow_symbol_change": true,
+                    "container_id": "tradingview_3cc07"
+                });
+            </script>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Polapikir Investor. All Rights Reserved.</p>
+    </div>
+</body>
+</html>

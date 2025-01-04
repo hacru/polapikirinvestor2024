@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teori Model Multi-Faktor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+            padding: 20px;
+            transition: background 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 3px solid #e0f7fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #e0f7fa;
+            color: #000;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            animation: fadeIn 1s ease-out;
+            flex-grow: 1;
+            margin-top: 80px; /* Memberikan ruang di atas konten untuk menghindari tumpang tindih dengan taskbar */
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        h1:hover, h2:hover {
+            transform: scale(1.05);
+        }
+
+        .intro, .explanation, .example {
+            margin-bottom: 40px;
+        }
+
+        .intro p, .explanation p, .example p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #34495e;
+        }
+
+        .example h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .example p {
+            font-size: 1.1em;
+            color: #7f8c8d;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 80%;
+            height: 400px;
+            margin: 40px auto;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="intro">
+            <h1>Teori Model Multi-Faktor</h1>
+            <p>Model ini digunakan untuk menjelaskan pengembalian suatu aset atau portofolio dengan mempertimbangkan berbagai faktor risiko yang mempengaruhi kinerja investasi. Berbeda dengan model tradisional yang hanya mengandalkan satu faktor (seperti pasar), model multi-faktor menggabungkan berbagai variabel untuk analisis yang lebih mendalam.</p>
+        </div>
+
+        <div class="explanation">
+            <h2>Pendahuluan</h2>
+            <p>Model Multi-Faktor memberikan gambaran yang lebih luas dalam penilaian investasi. Berbeda dengan Capital Asset Pricing Model (CAPM) yang hanya mempertimbangkan faktor risiko pasar, model ini memperkenalkan banyak faktor yang relevan, termasuk faktor makroekonomi dan karakteristik spesifik perusahaan yang dapat mempengaruhi nilai aset.</p>
+            <p>Contohnya, faktor makroekonomi seperti tingkat suku bunga, inflasi, atau kondisi pasar global dapat mempengaruhi semua sektor. Sementara itu, faktor spesifik perusahaan dapat mencakup ukuran perusahaan, nilai buku, atau kinerja perusahaan di sektor tertentu.</p>
+        </div>
+
+        <div class="example">
+            <h2>Contoh Penerapan Model Multi-Faktor</h2>
+            <h3>Model Fama-French 3-Factor</h3>
+            <p>Model ini menambahkan dua faktor tambahan ke dalam model CAPM, yaitu faktor ukuran perusahaan (SMB) dan faktor nilai perusahaan (HML). Ini membantu menjelaskan mengapa perusahaan kecil atau yang memiliki nilai rendah cenderung menghasilkan pengembalian yang lebih tinggi.</p>
+            <pre>
+                R_i - R_f = α_i + β1(R_m - R_f) + β2(SMB) + β3(HML) + ε_i
+            </pre>
+            <p>Di mana: <br>
+            - R_i adalah pengembalian aset<br>
+            - R_f adalah tingkat pengembalian bebas risiko<br>
+            - R_m adalah pengembalian pasar<br>
+            - SMB adalah perbedaan pengembalian antara perusahaan kecil dan besar<br>
+            - HML adalah perbedaan pengembalian antara saham dengan nilai tinggi dan rendah.
+            </p>
+        </div>
+
+        <div class="chart-container">
+            <h3>Pembagian Faktor Risiko dalam Model Multi-Faktor</h3>
+            <canvas id="multiFactorChart"></canvas>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Model Multi-Faktor. Semua hak dilindungi.</p>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('multiFactorChart').getContext('2d');
+        const multiFactorChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Faktor Pasar', 'Faktor Ukuran Perusahaan (SMB)', 'Faktor Nilai Perusahaan (HML)'],
+                datasets: [{
+                    label: 'Pembagian Faktor Risiko',
+                    data: [50, 25, 25],  // Prosentase dari faktor risiko
+                    backgroundColor: ['#3498db', '#e74c3c', '#2ecc71'],
+                    borderColor: ['#2980b9', '#c0392b', '#27ae60'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: {
+                    animateRotate: true,
+                    animateScale: true
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

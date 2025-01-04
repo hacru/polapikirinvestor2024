@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategi Investasi - Polapikir Investor</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #000;
+            scroll-behavior: smooth;
+        }
+
+        /* Taskbar */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slideInFromTop 1s ease-in-out;
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #e0f7fa;
+            color: #000;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Section Styles */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out;
+            margin-top: 70px;
+        }
+
+        section:nth-child(odd) {
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(to right, #ffffff, #e0f7fa);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Heading and Paragraph Styles */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        /* Button and Image Styles */
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            animation: bounceIn 1.5s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e0f7fa;
+            color: #000;
+        }
+
+        @keyframes bounceIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .image-container img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            animation: zoomIn 1.5s ease-out;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .navigation a {
+            display: inline-block;
+            margin: 0 5px;
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+
+        /* Indicator Style */
+        .indicator {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo" height="50">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Section 1: Perencanaan Keuangan Pribadi -->
+    <section id="saham">
+        <div class="text-container">
+            <h1>Rencana Keuangan </h1>
+            <p>Strategi untuk merencanakan masa depan keuangan Anda dengan mengelola aset, utang, dan investasi.</p>
+            <a href="rencana keuangan.html" class="cta-button">Pelajari Lebih Lanjut</a>
+            <div class="indicator">Indikator: Pengembalian Investasi, Debt-to-Income</div>
+        </div>
+        <div class="image-container">
+            <img src="images/saham.jpg" alt="Investasi Saham">
+        </div>
+    </section>
+
+    <!-- Section 2: Manajemen Risiko -->
+    <section id="reksa-dana">
+        <div class="text-container">
+            <h1>Manajemen Risiko</h1>
+            <p>Identifikasi dan kelola risiko yang terkait dengan investasi dan aset Anda untuk melindungi kekayaan Anda.</p>
+            <a href="manajemen_risiko.html" class="cta-button">Pelajari Lebih Lanjut</a>
+            <div class="indicator">Indikator: Expense Ratio, AUM, Historical Returns</div>
+        </div>
+        <div class="image-container">
+            <img src="images/reksa-dana.jpg" alt="Reksa Dana">
+        </div>
+    </section>
+
+    <!-- Section 3: Perencanaan Warisan -->
+    <section id="properti">
+        <div class="text-container">
+            <h1>Perencanaan Warisan</h1>
+            <p>Memastikan aset Anda diteruskan dengan cara yang paling efisien dan sesuai dengan keinginan Anda.</p>
+            <a href="Properti.html" class="cta-button">Pelajari Lebih Lanjut</a>
+            <div class="indicator">Indikator: Yield Sewa, ROI, Apresiasi Nilai</div>
+        </div>
+        <div class="image-container">
+            <img src="images/properti.jpg" alt="Investasi Properti">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Polapikir Investor. Semua Hak Cipta Dilindungi.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Polapikir Investor</title>
+    <style>
+        /* Gaya umum */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffeb3b;
+            color: #000;
+            animation: fadeInBody 2s ease-in-out;
+        }
+
+        /* Running text container */
+        .running-text-container {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 70px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .running-text-wrapper {
+            display: flex;
+            animation: scrollText 100s linear infinite; /* Memperpanjang waktu scroll untuk lebih lambat */
+        }
+
+        .running-text {
+            font-size: 1.2rem;
+            margin: 0 25px; /* Menambahkan jarak antar saham */
+            display: flex;
+            align-items: center;
+            white-space: nowrap; /* Menghindari teks terpotong */
+        }
+
+        .running-text.up {
+            color: #0f9d58; /* Hijau untuk harga naik */
+        }
+
+        .running-text.down {
+            color: #db4437; /* Merah untuk harga turun */
+        }
+
+        @keyframes scrollText {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes fadeInBody {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Running Text Container -->
+    <div class="running-text-container">
+        <div class="running-text-wrapper" id="runningText"></div>
+    </div>
+
+    <script>
+        // Daftar 50 saham Indonesia (simulasi data untuk contoh)
+        const stocks = [
+            { name: "BBCA", price: 30000, change: 0.5 },
+            { name: "TLKM", price: 5000, change: -0.3 },
+            { name: "BBRI", price: 4000, change: 0.2 },
+            { name: "UNVR", price: 60000, change: -0.1 },
+            { name: "AALI", price: 22000, change: 1.1 },
+            { name: "ASII", price: 8000, change: 0.8 },
+            { name: "CPIN", price: 7000, change: 0.5 },
+            { name: "EXCL", price: 2000, change: -0.2 },
+            { name: "GGRM", price: 47000, change: 0.4 },
+            { name: "HMSP", price: 10000, change: 0.3 },
+            { name: "ICBP", price: 15000, change: -0.4 },
+            { name: "INDF", price: 18000, change: 0.2 },
+            { name: "JSMR", price: 4000, change: 0.7 },
+            { name: "KLBF", price: 15000, change: 0.3 },
+            { name: "LPPF", price: 12000, change: 0.5 },
+            { name: "MEDC", price: 5000, change: -0.2 },
+            { name: "PGAS", price: 2500, change: 0.3 },
+            { name: "PTBA", price: 15000, change: 1.0 },
+            { name: "SMGR", price: 12000, change: 0.1 },
+            { name: "SIDO", price: 1000, change: 0.6 },
+            { name: "TINS", price: 1500, change: 0.2 },
+            { name: "INCO", price: 50000, change: -0.5 },
+            { name: "ANTM", price: 2500, change: 0.1 },
+            { name: "ADHI", price: 1500, change: 0.3 },
+            { name: "APEX", price: 1000, change: 0.1 },
+            { name: "BANK BRI", price: 4100, change: 0.7 },
+            { name: "BBNI", price: 8000, change: 0.3 },
+            { name: "BUMI", price: 900, change: 1.5 },
+            { name: "INDY", price: 17000, change: 0.4 },
+            { name: "ISAT", price: 2200, change: -0.3 },
+            { name: "JPMI", price: 12000, change: 0.6 },
+            { name: "KIJA", price: 1500, change: 0.4 },
+            { name: "LPKR", price: 1300, change: 0.2 },
+            { name: "MCAS", price: 12000, change: 0.5 },
+            { name: "MEGA", price: 3000, change: 0.4 },
+            { name: "MNCN", price: 1500, change: -0.2 },
+            { name: "MYRX", price: 2000, change: 0.3 },
+            { name: "PGAS", price: 2300, change: 0.5 },
+            { name: "PTPP", price: 5000, change: 0.6 },
+            { name: "SCMA", price: 10000, change: 0.1 },
+            { name: "SMRA", price: 1200, change: 0.2 },
+            { name: "SOLO", price: 1300, change: -0.1 },
+            { name: "TAPLN", price: 1500, change: 0.4 },
+            { name: "TOTO", price: 1800, change: 0.3 },
+            { name: "TRIM", price: 1700, change: -0.2 },
+            { name: "WIKA", price: 3000, change: 0.2 },
+            { name: "WSKT", price: 2500, change: 0.5 },
+            { name: "ZBRA", price: 2200, change: 0.3 },
+            { name: "WTON", price: 1500, change: 0.1 },
+            { name: "BIRD", price: 4500, change: -0.4 },
+            { name: "ROTI", price: 13000, change: 0.3 },
+            { name: "WSKT", price: 1200, change: 0.2 },
+            { name: "ADRO", price: 2100, change: 0.5 },
+            { name: "AKRA", price: 2800, change: 0.4 }
+        ];
+
+        // Fungsi untuk mendapatkan data harga saham secara dinamis (gunakan API nyata di sini)
+        async function updateStockPrices() {
+            // Di sini, Anda bisa mengganti dengan kode untuk mendapatkan harga saham terbaru dari API nyata
+            // Misalnya menggunakan fetch untuk API harga saham yang terupdate
+            // const response = await fetch('API_URL');
+            // const data = await response.json();
+
+            // Menggunakan data mock untuk contoh
+            const updatedStocks = stocks.map(stock => {
+                const updatedPrice = stock.price * (1 + (Math.random() - 0.5) * 0.02); // Simulasi perubahan harga
+                const updatedChange = (updatedPrice - stock.price) / stock.price * 100; // Menghitung perubahan persentase
+                return {
+                    ...stock,
+                    price: updatedPrice.toFixed(2),
+                    change: updatedChange.toFixed(2)
+                };
+            });
+
+            renderStockData(updatedStocks);
+        }
+
+        // Fungsi untuk menampilkan data harga saham
+        function renderStockData(stocks) {
+            const runningTextElement = document.getElementById('runningText');
+            runningTextElement.innerHTML = ""; // Reset konten sebelum menambahkan
+
+            stocks.forEach(stock => {
+                const stockElement = document.createElement('div');
+                stockElement.classList.add('running-text');
+                stockElement.textContent = `${stock.name}: Rp ${stock.price} (${stock.change > 0 ? "+" : ""}${stock.change}%)`;
+
+                // Menambahkan warna sesuai dengan perubahan harga
+                if (stock.change > 0) {
+                    stockElement.classList.add('up');
+                } else {
+                    stockElement.classList.add('down');
+                }
+
+                runningTextElement.appendChild(stockElement);
+            });
+        }
+
+        // Update setiap 5 detik
+        setInterval(updateStockPrices, 5000);
+
+        // Inisialisasi pertama kali
+        updateStockPrices();
+    </script>
+</body>
+</html>

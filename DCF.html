@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perhitungan Nilai Intrinsik (DCF) Sederhana</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            color: #000;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInFromTop {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffcc00;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .instructions {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .instructions h3 {
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .form-group button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #ffeb3b;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Perhitungan Nilai Intrinsik (DCF)</h1>
+
+        <!-- Instruksi Pengisian -->
+        <div class="instructions">
+            <h3>Tata Cara Pengisian</h3>
+            <ul>
+                <li><strong>Arus Kas Tahun Depan (Miliar):</strong> Masukkan jumlah arus kas perusahaan yang diperkirakan akan diterima pada tahun depan. Misalnya, jika perusahaan Anda diperkirakan akan menghasilkan 50 juta, maka masukkan 50.</li>
+                <li><strong>Tingkat Pertumbuhan Arus Kas (%):</strong> Masukkan tingkat pertumbuhan tahunan dari arus kas perusahaan. Contoh: jika Anda memperkirakan arus kas akan tumbuh sebesar 5% per tahun, masukkan angka 5.</li>
+                <li><strong>Tingkat Diskonto (%):</strong> Masukkan tingkat diskonto yang sesuai, yaitu tingkat bunga yang mencerminkan risiko investasi. Misalnya, masukkan 10 jika tingkat diskonto adalah 10%.</li>
+                <li><strong>Periode Proyeksi (Tahun):</strong> Masukkan jumlah tahun yang ingin dianalisis. Defaultnya adalah 5 tahun, tetapi Anda bisa menyesuaikan sesuai kebutuhan.</li>
+            </ul>
+        </div>
+
+        <!-- Formulir Input -->
+        <div class="form-group">
+            <label for="cashFlow">Arus Kas Tahun Depan (dalam Miliar):</label>
+            <input type="number" id="cashFlow" placeholder="Masukkan Arus Kas Tahun Depan (dalam Miliar)" required>
+        </div>
+        <div class="form-group">
+            <label for="growthRate">Tingkat Pertumbuhan Arus Kas (% per tahun):</label>
+            <input type="number" id="growthRate" placeholder="Tingkat Pertumbuhan Arus Kas (%)" required>
+        </div>
+        <div class="form-group">
+            <label for="discountRate">Tingkat Diskonto (%):</label>
+            <input type="number" id="discountRate" placeholder="Tingkat Diskonto (%)" required>
+        </div>
+        <div class="form-group">
+            <label for="years">Periode Proyeksi (tahun):</label>
+            <input type="number" id="years" value="5" placeholder="Periode proyeksi dalam tahun" required>
+        </div>
+        <div class="form-group">
+            <button onclick="calculateDCF()">Hitung Nilai Intrinsik</button>
+        </div>
+
+        <!-- Hasil Perhitungan -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Polapikir Investor</p>
+        <div>
+            <a href="privacy.html">Kebijakan Privasi</a>
+            <a href="terms.html">Syarat & Ketentuan</a>
+            <a href="sitemap.html">Peta Situs</a>
+        </div>
+    </footer>
+
+    <script>
+        function calculateDCF() {
+            // Ambil nilai input
+            var cashFlow = parseFloat(document.getElementById('cashFlow').value);
+            var growthRate = parseFloat(document.getElementById('growthRate').value) / 100;
+            var discountRate = parseFloat(document.getElementById('discountRate').value) / 100;
+            var years = parseInt(document.getElementById('years').value);
+            var resultText = "";
+
+            // Validasi input
+            if (isNaN(cashFlow) || isNaN(growthRate) || isNaN(discountRate) || isNaN(years) || cashFlow <= 0 || growthRate <= 0 || discountRate <= 0 || years <= 0) {
+                resultText = "Harap masukkan data yang valid!";
+            } else {
+                var totalDCF = 0;
+                var futureCashFlow = cashFlow;
+
+                // Proyeksi arus kas dan diskonto untuk setiap tahun
+                for (var i = 1; i <= years; i++) {
+                    futureCashFlow *= (1 + growthRate); // Arus kas tahun berikutnya
+                    var discountedCashFlow = futureCashFlow / Math.pow((1 + discountRate), i); // Diskonto arus kas
+                    totalDCF += discountedCashFlow; // Total DCF
+                }
+
+                resultText = "Nilai Intrinsik Perusahaan (DCF) adalah: Rp " + totalDCF.toLocaleString() + " Miliar.";
+            }
+
+            // Tampilkan hasil
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>

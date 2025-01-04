@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diversifikasi Investasi</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #e0f7fa, #ffffff); /* Gradasi latar belakang */
+            color: #000;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Taskbar */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 3px solid #ffd54f;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .taskbar a:hover {
+            background-color: #000;
+            color: #fff; /* Efek hover pada tautan */
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .footer p {
+            color: #000;
+            font-size: 1rem;
+        }
+
+        .container {
+            padding: 120px 20px 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: #000;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Pembagian Risiko */
+        .asset-allocation {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .asset-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 30%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        .asset-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .asset-card img {
+            width: 50px;
+            margin-bottom: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .asset-card h3 {
+            font-size: 1.5rem;
+            color: #000;
+        }
+
+        .asset-card p {
+            font-size: 1rem;
+            color: #000;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-section a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(120deg, #000, #212121);
+            color: #ffeb3b;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .cta-section a:hover {
+            background: linear-gradient(120deg, #212121, #424242);
+            color: #ffd54f;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Judul Halaman -->
+        <div class="section">
+            <h1>Diversifikasi Investasi</h1>
+            <p>Strategi diversifikasi bertujuan untuk membagi investasi ke berbagai kelas aset berdasarkan tingkat risiko. Berikut adalah pembagiannya:</p>
+        </div>
+
+        <!-- Pembagian Risiko -->
+        <div class="section">
+            <h2>Pembagian Risiko</h2>
+            <div class="asset-allocation">
+                <a href="mpt.html" class="asset-card">
+                    <img src="images/low-risk-icon.png" alt="TEORI MPT">
+                    <h3>Teori Portofolio Modern (MPT)</h3>
+                    <p>Teori portofolio modern (MPT) merupakan terobosan dalam investasi pribadi untuk mengelola risiko dengan cara diversifikasi.</p>
+                </a>
+                <a href="multifaktor.html" class="asset-card">
+                    <img src="images/medium-risk-icon.png" alt="TEORI MULTI FAKTOR">
+                    <h3>Teori Multifaktor</h3>
+                    <p>Investasi multifaktor adalah strategi yang menyaring saham berdasarkan faktor utama seperti nilai, kualitas, momentum, volatilitas minimum, dan ukuran.</p>
+                </a>
+                <a href="bpt.html" class="asset-card">
+                    <img src="images/high-risk-icon.png" alt="TEORI BPT">
+                    <h3>Behavioral Portfolio Theory (BPT)</h3>
+                    <p>BPT berfokus pada pengelolaan portofolio berdasarkan psikologi investor dan pengambilan keputusan dalam menghadapi risiko.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h3>Hubungi Kami Untuk Memulai Investasi Anda</h3>
+            <a href="contact.html">Hubungi Kami</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Polapikir Investor. All Rights Reserved.</p>
+    </div>
+</body>
+</html>

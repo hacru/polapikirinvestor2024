@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perencanaan Warisan - Polapikir Investor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffeb3b;
+            color: #000;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff; /* Bagian atas berwarna putih */
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .taskbar a {
+            color: #000; /* Warna font menjadi hitam */
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #ffeb3b; /* Warna hover tetap kuning */
+            color: #1c1c1c;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000; /* Warna font menjadi hitam */
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #000; /* Warna font menjadi hitam */
+            margin-top: 100px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            margin: 50px 20px;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: #000; /* Warna font menjadi hitam */
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #000; /* Warna font menjadi hitam */
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #1c1c1c;
+            background-color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            color: #1c1c1c;
+        }
+
+        .heritage-planning {
+            background-color: #fff; /* Kotak kalkulator berwarna putih */
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .heritage-planning h3 {
+            color: #000; /* Warna font kalkulator menjadi hitam */
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .heritage-planning form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .heritage-planning input, .heritage-planning select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ffeb3b;
+            border-radius: 5px;
+            background-color: #fff; /* Kotak input dan select menjadi putih */
+            color: #000; /* Font input menjadi hitam */
+        }
+
+        .heritage-planning button {
+            background-color: #ffeb3b;
+            color: #1c1c1c;
+            padding: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .heritage-planning button:hover {
+            background-color: #fff;
+            color: #1c1c1c;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #000; /* Warna font hasil kalkulasi menjadi hitam */
+        }
+
+        footer {
+            background-color: #fff; /* Bagian bawah berwarna putih */
+            color: #000; /* Warna font footer menjadi hitam */
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 2px solid #000;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .content-section {
+            margin-bottom: 100px; /* Memberikan ruang lebih banyak di bagian bawah */
+        }
+    </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h1>Perencanaan Warisan</h1>
+
+        <p>Perencanaan warisan adalah proses yang penting untuk memastikan bahwa aset dan kekayaan Anda dibagikan sesuai dengan keinginan Anda setelah Anda tiada. Kami membantu Anda merencanakan masa depan warisan Anda dengan solusi yang tepat dan terorganisir, mengoptimalkan perlindungan dan keuntungan bagi keluarga Anda.</p>
+
+        <h2>Pentingnya Perencanaan Warisan</h2>
+        <p>Perencanaan warisan yang baik dapat membantu menghindari perselisihan keluarga, mengurangi beban pajak, dan memastikan bahwa aset Anda dikelola dengan bijak. Dengan merencanakan lebih awal, Anda dapat memastikan bahwa semua yang telah Anda kerjakan dan bangun dalam hidup ini tetap berlanjut dan dihargai oleh generasi berikutnya.</p>
+
+        <h2>Jenis-Jenis Perencanaan Warisan</h2>
+        <p>Berikut adalah beberapa jenis perencanaan warisan yang kami tawarkan:</p>
+        <ul>
+            <li><strong>Testamen dan Wasiat:</strong> Menentukan siapa yang akan menerima aset Anda.</li>
+            <li><strong>Perwalian (Trust):</strong> Menjaga aset untuk penerima manfaat tertentu, mengurangi pajak dan biaya probate.</li>
+            <li><strong>Perencanaan Pajak Warisan:</strong> Memastikan pajak warisan Anda dikelola dengan efisien.</li>
+            <li><strong>Asuransi Jiwa:</strong> Menyediakan dana cepat untuk penerima manfaat Anda.</li>
+        </ul>
+
+        <div class="heritage-planning">
+            <h3>Perencanaan Warisan: Kalkulasi Pembagian Aset</h3>
+            <p>Gunakan kalkulator ini untuk memperkirakan pembagian aset atau warisan Anda berdasarkan persentase yang ditentukan. Ini membantu Anda memahami bagaimana aset dapat dibagi secara adil dan sesuai keinginan Anda.</p>
+
+            <form id="heritageForm">
+                <label for="assetValue">Nilai Aset (Rp):</label>
+                <input type="number" id="assetValue" name="assetValue" required placeholder="Masukkan Nilai Aset">
+
+                <label for="recipient">Penerima Manfaat:</label>
+                <select id="recipient" name="recipient">
+                    <option value="anak">Anak</option>
+                    <option value="pasangan">Pasangan</option>
+                    <option value="orangtua">Orangtua</option>
+                    <option value="saudara">Saudara</option>
+                </select>
+
+                <label for="percentage">Persentase Pembagian (%):</label>
+                <input type="number" id="percentage" name="percentage" required placeholder="Masukkan Persentase">
+
+                <button type="submit">Hitung Pembagian Warisan</button>
+            </form>
+
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Polapikir Investor | <a href="contact.html">Kontak</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('heritageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const assetValue = parseInt(document.getElementById('assetValue').value);
+            const percentage = parseInt(document.getElementById('percentage').value);
+            const recipient = document.getElementById('recipient').value;
+
+            if (isNaN(assetValue) || isNaN(percentage) || assetValue <= 0 || percentage <= 0 || percentage > 100) {
+                document.getElementById('result').innerHTML = 'Harap masukkan data yang valid.';
+                return;
+            }
+
+            const distribution = (assetValue * percentage) / 100;
+            document.getElementById('result').innerHTML = `Penerima: ${recipient}<br>Jumlah Warisan: Rp ${distribution.toLocaleString()}`;
+        });
+    </script>
+</body>
+</html>

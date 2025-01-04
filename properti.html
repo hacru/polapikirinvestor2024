@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investasi Properti - Polapikir Investor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif; /* Mengganti font menjadi Roboto */
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradasi dari biru muda ke putih */
+            color: #000; /* Warna teks utama menjadi hitam */
+            animation: fadeIn 1s ease-out; /* Menambahkan animasi fadeIn */
+        }
+
+        /* Animasi FadeIn */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparan putih */
+            padding: 15px 25px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #000; /* Border hitam untuk taskbar */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out; /* Menambahkan animasi slideDown */
+        }
+
+        /* Animasi SlideDown */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .taskbar a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000; /* Warna logo dan nama situs menjadi hitam */
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #000;
+            margin-top: 120px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out; /* Menambahkan animasi fadeInUp */
+        }
+
+        /* Animasi FadeInUp */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section {
+            margin: 50px 20px;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .content-section ul {
+            font-size: 1rem;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .content-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #000;
+            background-color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        #calculator, #sewaCalculator {
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style untuk kalkulator properti */
+        .calculator-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .calculator-container input {
+            padding: 15px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            width: 30%;
+        }
+
+        .calculator-container button {
+            padding: 15px 25px;
+            background-color: #ffeb3b;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .search-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .search-container input, .search-container select {
+            padding: 10px;
+            font-size: 1rem;
+            width: 30%;
+            margin: 5px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .property-list {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .property-item {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ffeb3b;
+            border-radius: 5px;
+            display: inline-block;
+            width: 30%;
+        }
+
+        .property-item h3 {
+            color: #ffeb3b;
+        }
+
+        .property-item p {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="media.html">Media</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h1>Investasi Properti</h1>
+
+        <h2>Pengenalan Investasi Properti</h2>
+        <p>
+            Investasi properti merupakan salah satu cara untuk memperoleh keuntungan yang stabil, baik melalui kenaikan harga properti maupun pendapatan dari penyewaan. Properti yang umum digunakan untuk investasi meliputi rumah, apartemen, tanah, dan gedung komersial.
+        </p>
+
+        <h2>Perhitungan Kenaikan Harga Properti</h2>
+        <p>
+            Menghitung potensi kenaikan harga properti dalam jangka panjang sangat penting. Kenaikan harga dapat dipengaruhi oleh berbagai faktor seperti lokasi, kondisi pasar, dan kebijakan pemerintah. Berikut adalah kalkulator untuk menghitung estimasi kenaikan harga properti.
+        </p>
+
+        <div id="calculator">
+            <h3>Kalkulator Kenaikan Harga Properti</h3>
+            <div class="calculator-container">
+                <input type="number" id="initial_price" placeholder="Harga Awal Properti (Rp)">
+                <input type="number" id="annual_increase" placeholder="Kenaikan Tahunan (%)">
+                <input type="number" id="years_property" placeholder="Jangka Waktu (Tahun)">
+                <button onclick="calculatePropertyGrowth()">Hitung Kenaikan</button>
+            </div>
+            <p id="property_result"></p>
+        </div>
+
+        <h2>Perhitungan Pendapatan dari Sewa</h2>
+        <p>
+            Pendapatan dari sewa adalah salah satu cara untuk memperoleh keuntungan jangka panjang. Kalkulator di bawah ini akan membantu Anda menghitung potensi pendapatan sewa properti.
+        </p>
+
+        <div id="sewaCalculator">
+            <h3>Kalkulator Pendapatan Sewa Properti</h3>
+            <div class="calculator-container">
+                <input type="number" id="sewa_per_month" placeholder="Sewa per Bulan (Rp)">
+                <input type="number" id="months" placeholder="Jumlah Bulan">
+                <button onclick="calculateRentalIncome()">Hitung Pendapatan</button>
+            </div>
+            <p id="sewa_result"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Polapikir Investor. Semua hak dilindungi.</p>
+        <div>
+            <a href="privacy.html">Kebijakan Privasi</a> | 
+            <a href="terms.html">Syarat & Ketentuan</a> | 
+            <a href="contact.html">Kontak Kami</a>
+        </div>
+    </footer>
+
+    <script>
+        function calculatePropertyGrowth() {
+            var initialPrice = parseFloat(document.getElementById('initial_price').value);
+            var annualIncrease = parseFloat(document.getElementById('annual_increase').value);
+            var years = parseInt(document.getElementById('years_property').value);
+            if (isNaN(initialPrice) || isNaN(annualIncrease) || isNaN(years)) {
+                alert("Harap masukkan semua nilai.");
+                return;
+            }
+            var finalPrice = initialPrice * Math.pow((1 + annualIncrease / 100), years);
+            document.getElementById('property_result').innerText = "Harga Properti setelah " + years + " tahun: Rp " + finalPrice.toFixed(2);
+        }
+
+        function calculateRentalIncome() {
+            var rentPerMonth = parseFloat(document.getElementById('sewa_per_month').value);
+            var months = parseInt(document.getElementById('months').value);
+            if (isNaN(rentPerMonth) || isNaN(months)) {
+                alert("Harap masukkan semua nilai.");
+                return;
+            }
+            var totalIncome = rentPerMonth * months;
+            document.getElementById('sewa_result').innerText = "Pendapatan Sewa untuk " + months + " bulan: Rp " + totalIncome.toFixed(2);
+        }
+    </script>
+</body>
+</html>

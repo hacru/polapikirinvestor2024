@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memahami Blockchain - Fitur Interaktif dan Visualisasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            background: linear-gradient(to right, #e0f7fa, #ffffff); /* Gradasi linear */
+            color: #000;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            animation: slideInFromTop 1s ease-in-out;
+        }
+
+        @keyframes slideInFromTop {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .blockchain-visualization {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .block {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 20px;
+            margin: 0 10px;
+            border-radius: 10px;
+            transition: transform 0.5s ease, background-color 0.3s ease;
+            opacity: 0;
+            animation: fadeInBlock 1.5s ease-out forwards;
+        }
+
+        .block:hover {
+            transform: scale(1.1);
+            background-color: #45a049;
+        }
+
+        @keyframes fadeInBlock {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tool-button {
+            display: inline-block;
+            padding: 12px 25px;
+            color: #fff;
+            background-color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            margin: 15px;
+        }
+
+        .tool-button:hover {
+            background-color: #ffeb3b;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .animation-text {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            color: #555;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .transaction-animation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .transaction-step {
+            padding: 20px;
+            background-color: #ff5722;
+            color: white;
+            border-radius: 5px;
+            opacity: 0;
+            animation: fadeInStep 2s ease-out forwards;
+        }
+
+        .transaction-step:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .transaction-step:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .transaction-step:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeInStep {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slideInFromTop 1s ease-in-out;
+        }
+
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .taskbar a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .website-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .website-name img {
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .website-name span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="taskbar">
+        <div class="website-name">
+            <a href="home.html">
+                <img src="images/logo.webp" alt="Polapikir Investor Logo">
+            </a>
+            <span>Polapikir Investor</span>
+        </div>
+        <div>
+            <a href="home.html">Beranda</a>
+            <a href="about.html">Tentang</a>
+            <a href="portfolio.html">Portofolio</a>
+            <a href="media.html">Media</a>
+            <a href="contact.html">Kontak</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>Memahami Blockchain - Visualisasi dan Interaktivitas</h1>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Visualisasi Blockchain</h2>
+            <p>Di bawah ini adalah visualisasi yang menggambarkan bagaimana blok-blok dalam blockchain terhubung satu sama lain. Setiap blok memiliki informasi transaksi dan hash yang menghubungkannya dengan blok sebelumnya, memastikan keamanan dan integritas data.</p>
+
+            <div class="blockchain-visualization">
+                <div class="block">Blok #1 <br>Hash: abcd1234</div>
+                <div class="block">Blok #2 <br>Hash: efgh5678</div>
+                <div class="block">Blok #3 <br>Hash: ijkl9012</div>
+            </div>
+
+            <div class="animation-text">
+                <p>Animasi di atas menunjukkan blok-blok dalam blockchain yang saling terhubung. Setiap blok berisi informasi transaksi dan hash unik.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Animasi Proses Blockchain dalam Aksi</h2>
+            <p>Di bawah ini adalah animasi yang menggambarkan bagaimana transaksi baru ditambahkan ke blockchain. Proses ini mencakup verifikasi transaksi, penambahan blok ke rantai, dan pengamanan menggunakan hash.</p>
+
+            <div class="transaction-animation">
+                <div class="transaction-step">Verifikasi Transaksi</div>
+                <div class="transaction-step">Penambahan Blok ke Rantai</div>
+                <div class="transaction-step">Keamanan Hash</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Contoh Kode Blockchain (Sederhana)</h2>
+            <div class="example">
+                <p>Berikut adalah contoh kode sederhana untuk blockchain menggunakan Python:</p>
+                <pre>
+class Block:
+    def __init__(self, index, previous_hash, timestamp, data, hash):
+        self.index = index
+        self.previous_hash = previous_hash
+        self.timestamp = timestamp
+        self.data = data
+        self.hash = hash
+
+class Blockchain:
+    def __init__(self):
+        self.chain = [self.create_genesis_block()]
+
+    def create_genesis_block(self):
+        return Block(0, "0", "2025-01-04", "Genesis Block", "abcd1234")
+
+    def add_block(self, data):
+        previous_block = self.chain[-1]
+        index = previous_block.index + 1
+        timestamp = "2025-01-04"
+        hash = "somehashvalue"  # Simplifikasi: Anda bisa menggunakan hash yang lebih kompleks
+        new_block = Block(index, previous_block.hash, timestamp, data, hash)
+        self.chain.append(new_block)
+
+blockchain = Blockchain()
+blockchain.add_block("Transaksi pertama")
+blockchain.add_block("Transaksi kedua")
+
+for block in blockchain.chain:
+    print(f"Block #{block.index} [{block.timestamp}]: {block.data}")
+                </pre>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Blockchain Insights. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
